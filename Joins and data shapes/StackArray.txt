@@ -1,5 +1,3 @@
-Category,Joins and data shapes
-
 Author,Charl Potgieter
 
 Description,"Converts an x by y element array into a single column by stacking all the columns on top of each other"

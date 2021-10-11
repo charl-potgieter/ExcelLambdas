@@ -1,5 +1,3 @@
-Category,Joins and data shapes
-
 Author,Charl Potgieter
 
 Description,"Appends 2 columns, one below the other"
