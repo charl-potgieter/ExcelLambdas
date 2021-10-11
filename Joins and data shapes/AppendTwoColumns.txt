@@ -5,7 +5,7 @@ Description,"Appends 2 columns, one below the other"
 PipeDelimitedParameterAndDescription,"range1|First range to append|
 range2|Second range to append"
 
-Formula,"=LAMBDA(range1,range2,
+RefersTo,"=LAMBDA(range1,range2,
   LET(
           RowsRng1, ROWS(range1),
           RowsTotal, ROWS(range1) + ROWS(range2),

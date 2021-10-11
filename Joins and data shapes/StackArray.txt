@@ -4,7 +4,7 @@ Description,"Converts an x by y element array into a single column by stacking a
 
 PipeDelimitedParameterAndDescription,ArrayToStack|Array or selection of cells to be stacked
 
-Formula,"=LAMBDA(ArrayToStack,
+RefersTo,"=LAMBDA(ArrayToStack,
      LET(
            ColCount, COLUMNS(ArrayToStack),
            RowCount, ROWS(ArrayToStack),

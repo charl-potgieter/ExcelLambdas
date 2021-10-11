@@ -5,7 +5,7 @@ Description,"Returns an array of month ends between start and end dates"
 PipeDelimitedParameterAndDescription,"DateStart|First of month sequence|
 DateEnd|Last month of sequence"
 
-Formula,"=LAMBDA(range1,range2,
+RefersTo,"=LAMBDA(range1,range2,
   LET(
           RowsRng1, ROWS(range1),
           RowsTotal, ROWS(range1) + ROWS(range2),
