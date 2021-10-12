@@ -14,7 +14,7 @@ RefersTo:
           RowsTotal, ROWS(range1) + ROWS(range2),
           Seq,SEQUENCE(RowsTotal),
           IF(
-              Seq&lt;=RowsRng1, INDEX(range1, Seq),
+              Seq<=RowsRng1, INDEX(range1, Seq),
               INDEX(range2, Seq-RowsRng1)
          )
      )
