@@ -14,7 +14,7 @@ RefersTo,"=LAMBDA(ArrayToStack,
            ColIndex, ROUNDUP(Seq/RowCount, 0),
            ErrorValue, 1/0,
            ReturnValue, INDEX(ArrayToStack, RowIndex, ColIndex),
-           ArrayInclErrors, IF(ReturnValue = "", ErrorValue, ReturnValue),
+           ArrayInclErrors, IF(ReturnValue = """", ErrorValue, ReturnValue),
            FILTER(ArrayInclErrors, NOT(ISERROR(ArrayInclErrors)))
         )
 )"
