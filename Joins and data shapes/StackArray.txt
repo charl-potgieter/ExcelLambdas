@@ -1,10 +1,10 @@
 Author,Charl Potgieter
 
-Description,Converts an x by y element array into a single column by stacking all the columns on top of each other
+Description,"Converts an x by y element array into a single column by stacking all the columns on top of each other"
 
-PipeDelimitedParameterAndDescription,ArrayToStack|Array or selection of cells to be stacked
+PipeDelimitedParameterAndDescription,"ArrayToStack|Array or selection of cells to be stacked"
 
-RefersTo,=LAMBDA(ArrayToStack,
+RefersTo,"=LAMBDA(ArrayToStack,
      LET(
            ColCount, COLUMNS(ArrayToStack),
            RowCount, ROWS(ArrayToStack),
@@ -17,4 +17,4 @@ RefersTo,=LAMBDA(ArrayToStack,
            ArrayInclErrors, IF(ReturnValue = "", ErrorValue, ReturnValue),
            FILTER(ArrayInclErrors, NOT(ISERROR(ArrayInclErrors)))
         )
-)
+)"
