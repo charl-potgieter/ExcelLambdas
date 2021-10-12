@@ -1,0 +1,13 @@
+<lambda>
+    <Author>ExcelJet</Author>
+    <Description>https://exceljet.net/formula/lambda-split-text-to-array</Description>
+    <PipeDelimitedParameterAndDescription>text|Text to be delimited|delim|Characted delimiter</PipeDelimitedParameterAndDescription>
+    <RefersTo>=LAMBDA(text,delim,
+      TRANSPOSE(
+           FILTERXML(
+                "<x><y>" & SUBSTITUTE(text,delim,"</y><y>") & "</y></x>",
+                 "//y"
+             )
+       )
+)</RefersTo>
+</lambda>
