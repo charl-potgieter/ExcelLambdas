@@ -5,7 +5,7 @@
     <RefersTo>=LAMBDA(text,delim,
       TRANSPOSE(
            FILTERXML(
-                "<x><y>" & SUBSTITUTE(text,delim,"</y><y>") & "</y></x>",
+                "<x><y>" &amp; SUBSTITUTE(text,delim,"</y><y>") &amp; "</y></x>",
                  "//y"
              )
        )
