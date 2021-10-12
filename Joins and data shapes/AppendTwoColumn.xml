@@ -4,15 +4,15 @@
     <PipeDelimitedParameterAndDescription>range1|First range to append|
         range2|Second range to append</PipeDelimitedParameterAndDescription>
     <RefersTo>=LAMBDA(range1,range2,
-        LET(
-            RowsRng1, ROWS(range1),
-            RowsTotal, ROWS(range1) + ROWS(range2),
-            Seq,SEQUENCE(RowsTotal),
-            IF(
-                Seq&lt;=RowsRng1, INDEX(range1, Seq),
-                INDEX(range2, Seq-RowsRng1)
-                )
-            )
-            )
+  LET(
+          RowsRng1, ROWS(range1),
+          RowsTotal, ROWS(range1) + ROWS(range2),
+          Seq,SEQUENCE(RowsTotal),
+          IF(
+              Seq&lt;=RowsRng1, INDEX(range1, Seq),
+              INDEX(range2, Seq-RowsRng1)
+             )
+         )
+)
 )</RefersTo>
 </lambda>
