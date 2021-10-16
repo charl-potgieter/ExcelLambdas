@@ -1,0 +1,17 @@
+Author:
+Charl Potgieter
+//////////
+Description:
+Capitalise first letter of string, all other letters are converted to lower case
+//////////
+PipeDelimitedParameterAndDescription:
+String|String to capitalise first letter
+//////////
+RefersTo:
+=LAMBDA(String,
+    LET(
+         FirstLetter, LEFT(String,1),
+         RemainderOfLetters, RIGHT(String, LEN(String)-1),
+        UPPER(FirstLetter) & LOWER(RemainderOfLetters)
+      )
+)
