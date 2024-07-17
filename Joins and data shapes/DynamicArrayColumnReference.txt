@@ -1,0 +1,11 @@
+//Enables referencing of a column by name in a dynamic array
+TableColumn=LAMBDA(
+    InputArray,ColumnName,
+    LET(
+        ArrayHeaders,CHOOSEROWS(InputArray,1),
+        HeaderPosition, XMATCH(ColumnName,ArrayHeaders),
+        EntireColumn, CHOOSECOLS(InputArray, HeaderPosition),
+        ColumnExHeader,DROP(EntireColumn,1),
+        ColumnExHeader
+    )
+)
