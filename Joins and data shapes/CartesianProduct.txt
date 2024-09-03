@@ -1,0 +1,22 @@
+CartesianProuct=LAMBDA(ColumnOne, ColumnTwo,
+
+    LET(
+        ColumnOne, TOCOL(ColumnOne),
+        ColumnTwo, TOCOL(ColumnTwo),
+        ReturnValue, REDUCE(0,ColumnOne, 
+            LAMBDA(Accumulator,ColumnOneValue,
+                LET(
+                    ColumnOneValueRepeated,IF(NOT(ISBLANK(ColumnTwo)), ColumnOneValue),
+                    FirstAndSecondColumns, HSTACK(ColumnOneValueRepeated, ColumnTwo),
+                    AccumulatorIsEmpty, INDEX(Accumulator,1,1)=0,
+                    IF(
+                        AccumulatorIsEmpty, 
+                        FirstAndSecondColumns,
+                        VSTACK(Accumulator, FirstAndSecondColumns)
+                    )
+                )
+            )
+        ),
+        ReturnValue
+    )
+)
