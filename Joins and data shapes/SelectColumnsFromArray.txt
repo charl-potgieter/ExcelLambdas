@@ -1,0 +1,42 @@
+//Selects ColumnHeadersToSelect from ArrayInclHeadings.
+//If the column name does not exist an empty column is returned
+//If IncludeHeadings=TRUE then headings are returned along with data, otherwise no headings.
+
+SelectColumnsFromArray = LAMBDA(ArrayInclHeadings, ColumnHeadersToSelect, IncludeHeadings,
+    LET(
+        ArrayHeadings, INDEX(ArrayInclHeadings,1,),
+        ArrayData, DROP(ArrayInclHeadings, 1),
+        ReturnData, REDUCE(
+            "NOT YET INITIALISED",
+            ColumnHeadersToSelect,
+            LAMBDA(
+                AccumulatedTable, 
+                CurrentHeader,                
+                LET(
+                    AccumulatorNotInitialised, INDEX(AccumulatedTable,1,1)="NOT YET INITIALISED",
+                    NumberOfDataRows, Rows(ArrayData),
+                    HeaderExistsInArray, SUM((ArrayHeadings=CurrentHeader)*1)>=1,
+                    HeaderIndex, XMATCH(CurrentHeader, ArrayHeadings),
+                    EmptyColumn, IF(SEQUENCE(NumberOfDataRows), ""),
+                    DataColumnSelected, IF(
+                        HeaderExistsInArray,
+                        INDEX(ArrayData,,HeaderIndex),
+                        EmptyColumn
+                    ),
+                    ReturnValue, IF(
+                        AccumulatorNotInitialised,
+                        DataColumnSelected, 
+                        HSTACK(AccumulatedTable, DataColumnSelected)
+                    ),
+                    ReturnValue
+                )
+            )
+        ),
+        ReturnValue, IF(
+            IncludeHeadings, 
+            VSTACK(TOROW(ColumnHeadersToSelect), ReturnData), 
+            ReturnData
+            ),
+        ReturnValue
+    )
+);
