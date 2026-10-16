@@ -1,0 +1,39 @@
+//Follow python convention in that functions starting with underscore are intended to be hidden
+
+integrate_trapezoid_rule = LAMBDA(fn,a, b, [n], 
+    //Returns the definite integral of function fn between a and b utilising
+    //the trapezoid rule with n trapazoids    
+    LET(
+
+        default_num_trapezoids, 100,
+        n, IF(ISOMITTED(n), default_num_trapezoids, n),
+
+        return_value, IF(
+            n=1, 
+            _integrate_with_one_trapazoid(fn, a, b),
+            _integrate_with_multi_trapazoids(fn, a, b, n)
+        ),
+
+        return_value
+        
+    )
+);
+    
+_integrate_with_one_trapazoid = LAMBDA(fn,a, b,
+    LET(
+        trapezoid_width, (b-a),
+        return_value, (b-a)/2*(fn(a) + fn(b)),
+        return_value
+        )
+);
+
+_integrate_with_multi_trapazoids = LAMBDA(fn,a, b,n, 
+    //a is x_0 and b is x_n
+    LET(
+        trapezoid_width, (b-a)/n,
+        x_values_ex_a_and_b, a + SEQUENCE(n-1)* trapezoid_width,
+        return_value, (b-a)/(2*n)*(fn(a) + fn(b) + 2 * sum(fn(x_values_ex_a_and_b))),
+        return_value
+        )
+);
+
